@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/screens/category_meal_detail_screen.dart';
 
 class CategoryMealItem extends StatelessWidget {
   final Meal meal;
 
   const CategoryMealItem(this.meal, {Key? key}) : super(key: key);
 
-  void onMealSelect() {}
-
+  void onMealSelect(BuildContext context) {
+    Navigator.of(context)
+        .pushNamed(CategoryMealDetailScreen.routeName, arguments: meal);
+  }
 
   String get complexityLabel {
-    switch(meal.complexity){
+    switch (meal.complexity) {
       case Complexity.simple:
         return 'Simple';
       case Complexity.challenging:
@@ -23,7 +26,7 @@ class CategoryMealItem extends StatelessWidget {
   }
 
   String get affordabilityLabel {
-    switch(meal.affordability){
+    switch (meal.affordability) {
       case Affordability.affordable:
         return 'Affordable';
       case Affordability.pricey:
@@ -36,7 +39,7 @@ class CategoryMealItem extends StatelessWidget {
   }
 
   List<Widget> get bottomBarItems {
-    return   [
+    return [
       Row(
         children: [
           const Icon(Icons.schedule),
@@ -44,7 +47,6 @@ class CategoryMealItem extends StatelessWidget {
           Text('${meal.duration} min'),
         ],
       ),
-
       Row(
         children: [
           const Icon(Icons.work),
@@ -52,7 +54,6 @@ class CategoryMealItem extends StatelessWidget {
           Text(complexityLabel),
         ],
       ),
-
       Row(
         children: [
           const Icon(Icons.euro_rounded),
@@ -63,12 +64,10 @@ class CategoryMealItem extends StatelessWidget {
     ];
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onMealSelect,
+      onTap: () => onMealSelect(context),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
@@ -113,9 +112,8 @@ class CategoryMealItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: bottomBarItems
-              ),
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: bottomBarItems),
             )
           ],
         ),
