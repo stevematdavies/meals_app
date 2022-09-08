@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/dummy_data.dart';
+import 'package:meals_app/widgets/category_meal_item.dart';
 
 import '../models/category.dart';
 import '../models/meal.dart';
@@ -10,8 +11,8 @@ class CategoryMealsScreen extends StatelessWidget {
 
   const CategoryMealsScreen({Key? key}) : super(key: key);
 
-  Widget _mealForCategory(BuildContext ctx, int index, List<Meal> meals){
-    return Text(meals[index].title);
+  Widget _mealForCategory(BuildContext ctx, int index, Meal meal){
+    return CategoryMealItem(meal);
   }
 
   @override
@@ -25,7 +26,7 @@ class CategoryMealsScreen extends StatelessWidget {
         title:  Text(category.title),
       ),
       body: ListView.builder(
-          itemBuilder: (c,i) => _mealForCategory(c,i, mealsForCategory),
+          itemBuilder: (c,i) => _mealForCategory(c,i, mealsForCategory[i]),
         itemCount: mealsForCategory.length,
       )
     );
