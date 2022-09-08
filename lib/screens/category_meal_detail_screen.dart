@@ -11,9 +11,11 @@ class CategoryMealDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Meal meal = ModalRoute.of(context)?.settings.arguments as Meal;
     return Scaffold(
-      body: Center(
-        child: Text(meal.title),
-      )
-    );
+        appBar: AppBar(
+          title: Text(meal.title),
+        ),
+        body: Center(
+          child: Text(meal.id),
+        ));
   }
 }
