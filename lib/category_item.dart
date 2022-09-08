@@ -10,7 +10,7 @@ class CategoryItem extends StatelessWidget {
 
   void _categoryItemOnTap(BuildContext ctx) {
     Navigator.of(ctx)
-        .pushNamed('/category-meals', arguments: category);
+        .pushNamed(CategoryMealsScreen.routeName, arguments: category);
   }
 
   @override
