@@ -29,10 +29,10 @@ class MealApp extends StatelessWidget {
           )
         )
       ),
-      initialRoute: '/',
+      initialRoute: CategoriesScreen.routeName,
       routes: {
-        '/': (_) => const CategoriesScreen(),
-        '/category-meals': (_) => const CategoryMealsScreen()
+        CategoriesScreen.routeName: (_) => const CategoriesScreen(),
+        CategoryMealsScreen.routeName: (_) => const CategoryMealsScreen()
       },
     );
   }

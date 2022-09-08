@@ -3,6 +3,9 @@ import 'package:meals_app/category_item.dart';
 import 'package:meals_app/dummy_data.dart';
 
 class CategoriesScreen extends StatelessWidget {
+
+  static const routeName = '/categories';
+
   const CategoriesScreen({Key? key}) : super(key: key);
 
   @override
